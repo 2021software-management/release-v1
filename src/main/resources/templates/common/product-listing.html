@@ -15,7 +15,7 @@
     <meta name="author" content="Nghia Minh Luong">
     <meta name="keywords" content="Default Description">
     <meta name="description" content="Default keyword">
-    <title>商品清单</title>
+    <title>Products</title>
     <!-- Fonts-->
     <link rel="stylesheet" th:href="@{/static/css/fontsgoogleapis.css}">
     <link rel="stylesheet" th:href="@{static/plugins/font-awesome/css/font-awesome.min.css}">
@@ -64,28 +64,30 @@
 <main class="ps-main">
     <div class="ps-products-wrap pt-80 pb-80" id="productlist">
         <div class="ps-products" data-mh="product-listing">
-            <div class="ps-product-action">
-                <form class="layui-form" action="">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label" style="font-size:25px;color:#626262"><b>价格</b></label>
-                        <div class="layui-input-inline">
-                            <select name="cname" lay-filter="setprices">
-                                <option th:title="0">默认</option>
-                                <option th:title="1">价格 (从低到高)</option>
-                                <option th:title="2">价格 (从高到低)</option>
-                            </select>
-                        </div>
-                        <label class="layui-form-label" style="font-size:25px;color:#626262"><b>区域</b></label>
-                        <div class="layui-input-inline">
-                            <select name="cname" lay-filter="setareas">
-                                <option th:title="全部">全部</option>
-                                <option th:title="本校">本校</option>
-                                <option th:title="附近">附近</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
-            </div>
+
+<!--            <div class="ps-product-action">-->
+<!--                <form class="layui-form" action="">-->
+<!--                    <div class="layui-form-item">-->
+<!--                        <label class="layui-form-label" style="font-size:25px;color:#626262"><b>价格</b></label>-->
+<!--                        <div class="layui-input-inline">-->
+<!--                            <select name="cname" lay-filter="setprices">-->
+<!--                                <option th:title="0">默认</option>-->
+<!--                                <option th:title="1">价格 (从低到高)</option>-->
+<!--                                <option th:title="2">价格 (从高到低)</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                        <label class="layui-form-label" style="font-size:25px;color:#626262"><b>区域</b></label>-->
+<!--                        <div class="layui-input-inline">-->
+<!--                            <select name="cname" lay-filter="setareas">-->
+<!--                                <option th:title="全部">全部</option>-->
+<!--                                <option th:title="本校">本校</option>-->
+<!--                                <option th:title="附近">附近</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--            </div>-->
+
             <div class="ps-product__columns">
                 <div class="layui-container" style="width:100%">
                     <div class="layui-row layui-col-space5">
@@ -131,34 +133,36 @@
                 </div>
             </div>
         </div>
-        <div class="ps-sidebar" data-mh="product-listing">
-            <aside class="ps-widget--sidebar ps-widget--category">
-                <div class="ps-widget__header">
-                    <h3>类别</h3>
-                </div>
-                <div class="ps-widget__content">
-                    <ul class="ps-list--checked">
-                        <li id="ac1" class="current" onclick="setcategory('全部','ac1');" style="cursor:pointer"><a>全部</a></li>
-                        <li id="ac2" onclick="setcategory('3C数码','ac2');" style="cursor:pointer"><a>3C数码</a></li>
-                        <li id="ac3" onclick="setcategory('书籍','ac3');" style="cursor:pointer"><a>书籍</a></li>
-                        <li id="ac4" onclick="setcategory('生活用品','ac4');" style="cursor:pointer"><a>生活用品</a></li>
-                        <li id="ac5" onclick="setcategory('服饰','ac5');" style="cursor:pointer"><a>服饰</a></li>
-                        <li id="ac6" onclick="setcategory('美妆','ac6');" style="cursor:pointer"><a>美妆</a></li>
-                        <li id="ac7" onclick="setcategory('出行','ac7');" style="cursor:pointer"><a>出行</a></li>
-                        <li id="ac8" onclick="setcategory('其他','ac8');" style="cursor:pointer"><a>其他</a></li>
-                    </ul>
-                </div>
-            </aside>
-            <aside class="ps-widget--sidebar ps-widget--filter">
-                <div class="ps-widget__header">
-                    <h3>价格</h3>
-                </div>
-                <div class="ps-widget__content">
-                    <div id="slideTest9" class="demo-slider"></div>
-                    <div id="test-slider-tips2" style="position:relative; left: 30px; margin-top: -10px;"></div>
-                </div>
-            </aside>
-        </div>
+
+<!--        <div class="ps-sidebar" data-mh="product-listing">-->
+<!--            <aside class="ps-widget&#45;&#45;sidebar ps-widget&#45;&#45;category">-->
+<!--                <div class="ps-widget__header">-->
+<!--                    <h3>类别</h3>-->
+<!--                </div>-->
+<!--                <div class="ps-widget__content">-->
+<!--                    <ul class="ps-list&#45;&#45;checked">-->
+<!--                        <li id="ac1" class="current" onclick="setcategory('全部','ac1');" style="cursor:pointer"><a>全部</a></li>-->
+<!--                        <li id="ac2" onclick="setcategory('3C数码','ac2');" style="cursor:pointer"><a>3C数码</a></li>-->
+<!--                        <li id="ac3" onclick="setcategory('书籍','ac3');" style="cursor:pointer"><a>书籍</a></li>-->
+<!--                        <li id="ac4" onclick="setcategory('生活用品','ac4');" style="cursor:pointer"><a>生活用品</a></li>-->
+<!--                        <li id="ac5" onclick="setcategory('服饰','ac5');" style="cursor:pointer"><a>服饰</a></li>-->
+<!--                        <li id="ac6" onclick="setcategory('美妆','ac6');" style="cursor:pointer"><a>美妆</a></li>-->
+<!--                        <li id="ac7" onclick="setcategory('出行','ac7');" style="cursor:pointer"><a>出行</a></li>-->
+<!--                        <li id="ac8" onclick="setcategory('其他','ac8');" style="cursor:pointer"><a>其他</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </aside>-->
+<!--            <aside class="ps-widget&#45;&#45;sidebar ps-widget&#45;&#45;filter">-->
+<!--                <div class="ps-widget__header">-->
+<!--                    <h3>价格</h3>-->
+<!--                </div>-->
+<!--                <div class="ps-widget__content">-->
+<!--                    <div id="slideTest9" class="demo-slider"></div>-->
+<!--                    <div id="test-slider-tips2" style="position:relative; left: 30px; margin-top: -10px;"></div>-->
+<!--                </div>-->
+<!--            </aside>-->
+<!--        </div>-->
+
     </div>
     <div class="ps-footer bg--cover" style="margin-top: 2000px" data-background="images/background/parallax.jpg">
         <div class="ps-footer__content">
@@ -166,7 +170,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
                         <aside class="ps-widget--footer ps-widget--info">
-                            <header><a class="ps-logo" th:href="@{/}"><img th:src="@{/static/images/logo-white.png}"
+                            <header><a class="ps-logo" th:href="@{/}"><img th:src="@{/static/images/logo.png}"
                                                                                  alt=""></a>
                                 <h3 class="ps-widget__title">Address Office 1</h3>
                             </header>
