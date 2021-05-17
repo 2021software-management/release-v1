@@ -20,7 +20,11 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -146,8 +150,11 @@ public class CommodityController {
         String filename = UUID.randomUUID().toString().replaceAll("-", "");
         String ext = FilenameUtils.getExtension(file.getOriginalFilename());
         String filenames = filename + "." + ext;
-        String pathname = "/opt/jetty/webapps/pic/" + filenames;
-        file.transferTo(new File(pathname));
+        String pathname = "/opt/jetty/webapps/pic/";
+        Path filepath = Paths.get(pathname, filenames);
+        try (OutputStream os = Files.newOutputStream(filepath)) {
+            os.write(file.getBytes());
+        }
         resUrl.put("src", "/pic/"+filenames);
         res.put("msg", "");
         res.put("code", 0);
