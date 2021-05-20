@@ -117,7 +117,7 @@ public class ChatCtrl {
         UserInfo mine=friendsService.LookUserMine(userid);
         //好友列表
         List<UserInfo> list=friendsService.LookUserFriend(userid);
-        Friend friend=new Friend().setId("2").setGroupname("分组").setList(list);
+        Friend friend=new Friend().setId("2").setGroupname("Group").setList(list);
         List<Friend> friendList=new ArrayList<>();
         friendList.add(friend);
         //群组信息

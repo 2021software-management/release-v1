@@ -70,7 +70,7 @@ var newslist = new Vue({
         },showNewsDetail:function(id){
             layer.open({
                 type: 2,
-                title: '公告详情',
+                title: 'Announcement Detail',
                 shadeClose: true,
                 shade: 0.8,
                 maxmin: true,
