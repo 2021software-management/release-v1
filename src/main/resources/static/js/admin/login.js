@@ -27,7 +27,7 @@ layui.config({
             contentType: "application/json;charset=utf-8",
             success: function (data) {
                 if (data.status == 200) {
-                    layer.msg(data.message, {
+                    layer.msg("Login Successfully!"/*data.message*/, {
                         time: 1000,
                         icon: 1,
                         offset: '100px'
@@ -35,7 +35,7 @@ layui.config({
                         location.href="/admin/index";
                     });
                 } else {
-                    layer.msg(data.message, {
+                    layer.msg("Wrong Password or Identifying Code!"/*data.message*/, {
                         time: 1000,
                         icon: 5,
                         offset: '100px'
