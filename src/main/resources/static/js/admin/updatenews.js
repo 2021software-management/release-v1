@@ -83,7 +83,7 @@ if(qxs==1){
         form.on('submit(demo1)', function (data) {
             let vuemainimg = getmainimgurl();
             if (vuemainimg.length === 0) {
-                layer.msg('请上传公告的主图', {
+                layer.msg('Please upload the picture of this notice!', {
                     time: 1000,
                     icon: 2,
                     offset: '150px'
@@ -91,7 +91,7 @@ if(qxs==1){
                 return false;
             }
             if (data.field.newstitle.length > 200) {
-                layer.msg('公告标题过长', {
+                layer.msg('The title is too long!', {
                     time: 1000,
                     icon: 2,
                     offset: '150px'
@@ -114,7 +114,7 @@ if(qxs==1){
                 dataType: "json",
                 beforeSend: function () {
                     layer.load(1, {
-                        content: '发布中...',
+                        content: 'Releasing...',
                         success: function (layero) {
                             layero.find('.layui-layer-content').css({
                                 'padding-top': '39px',
@@ -127,7 +127,7 @@ if(qxs==1){
                     layer.closeAll('loading');
                 },
                 success: function (data) {
-                    layer.msg("修改成功", {
+                    layer.msg("Edit successfully", {
                         time: 1000,
                         icon: 1,
                         offset: '100px'
@@ -136,7 +136,7 @@ if(qxs==1){
                         parent.layer.close(mylay);
                     });
                 }, error: function () {
-                    layer.msg('修改失败', {
+                    layer.msg('Edit failed', {
                         time: 1000,
                         icon: 2,
                         offset: '150px'
