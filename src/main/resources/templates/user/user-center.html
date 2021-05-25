@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.w3.org/1999/xhtml" lang="zh">
 <head>
     <meta charset="utf-8">
     <title>Personal Center</title>
@@ -38,7 +38,6 @@
                 </li>
             </ul>
             <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
-<!--                此处为系统消息,release2未给出,暂且注释-->
                 <li class="layui-nav-item" lay-unselect>
                     <a style="cursor: pointer" onclick="alertmessage()" layadmin-event="message" lay-text="Message center">
                         <i class="layui-icon layui-icon-notice"></i>
@@ -71,11 +70,10 @@
                         </dd>
                     </dl>
                 </li>
-<!--                此处会显示原本项目信息,故注释掉-->
-<!--                <li class="layui-nav-item layui-hide-xs" lay-unselect>-->
-<!--                    <a href="javascript:;" layadmin-event="about"><i-->
-<!--                            class="layui-icon layui-icon-more-vertical"></i></a>-->
-<!--                </li>-->
+                <li class="layui-nav-item layui-hide-xs" lay-unselect>
+                    <a href="javascript:;" layadmin-event="about"><i
+                            class="layui-icon layui-icon-more-vertical"></i></a>
+                </li>
                 <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
                     <a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
                 </li>
@@ -102,17 +100,17 @@
                             </dd>
                         </dl>
                     </li>
-                    <li data-name="collect" class="layui-nav-item">
-                        <a href="javascript:;" lay-tips="My Collection" lay-direction="2">
-                            <i class="layui-icon layui-icon-component"></i>
-                            <cite>Collection Management</cite>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd>
-                                <a lay-href="/user/collect">My Collection</a>
-                            </dd>
-                        </dl>
-                    </li>
+<!--                    <li data-name="collect" class="layui-nav-item">-->
+<!--                        <a href="javascript:;" lay-tips="我的收藏" lay-direction="2">-->
+<!--                            <i class="layui-icon layui-icon-component"></i>-->
+<!--                            <cite>收藏管理</cite>-->
+<!--                        </a>-->
+<!--                        <dl class="layui-nav-child">-->
+<!--                            <dd>-->
+<!--                                <a lay-href="/user/collect">我的收藏</a>-->
+<!--                            </dd>-->
+<!--                        </dl>-->
+<!--                    </li>-->
                     <li data-name="template" class="layui-nav-item">
                         <a href="javascript:;" lay-tips="商品管理" lay-direction="2">
                             <i class="layui-icon layui-icon-template"></i>
@@ -123,11 +121,11 @@
                                 <a lay-href="/user/relgoods">Release idle goods</a>
                             </dd>
                         </dl>
-<!--                        <dl class="layui-nav-child">-->
-<!--                            <dd>-->
-<!--                                <a lay-href="/user/product">商品清单</a>-->
-<!--                            </dd>-->
-<!--                        </dl>-->
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a lay-href="/user/product">Product List</a>
+                            </dd>
+                        </dl>
                     </li>
 <!--                    <li data-name="notice" class="layui-nav-item">-->
 <!--                        <a href="javascript:;" lay-tips="消息中心" lay-direction="2">-->
@@ -141,18 +139,17 @@
 <!--                        </dl>-->
 <!--                    </li>-->
 
-
-                    <li data-name="sold" class="layui-nav-item">
-                        <a href="javascript:;" lay-tips="Sales records" lay-direction="2">
-                            <i class="layui-icon layui-icon-list"></i>
-                            <cite>Sales records</cite>
-                        </a>
-                        <dl class="layui-nav-child">
-                            <dd>
-                                <a lay-href="/user/sold">My sales record</a>
-                            </dd>
-                        </dl>
-                    </li>
+<!--                    <li data-name="sold" class="layui-nav-item">-->
+<!--                        <a href="javascript:;" lay-tips="售出记录" lay-direction="2">-->
+<!--                            <i class="layui-icon layui-icon-list"></i>-->
+<!--                            <cite>售出记录</cite>-->
+<!--                        </a>-->
+<!--                        <dl class="layui-nav-child">-->
+<!--                            <dd>-->
+<!--                                <a lay-href="/user/sold">我的售出记录</a>-->
+<!--                            </dd>-->
+<!--                        </dl>-->
+<!--                    </li>-->
 
                     <li shiro:hasPermission="user:userinfo" data-name="set" class="layui-nav-item">
                         <a href="javascript:;" lay-tips="个人信息" lay-direction="2">
@@ -165,7 +162,7 @@
                             <!--dd><a lay-href="/user/phone">Change mobile phone number</a></dd--   >
                         </dl>
                     </li>
-                    <！--<li data-name="username" class="layui-nav-item">-->
+                    <!--<li data-name="username" class="layui-nav-item">-->
                         <!--<a href="javascript:;" lay-tips="个人主页" lay-direction="2">-->
                             <!--<i class="layui-icon layui-icon-username"></i>-->
                             <!--<cite>个人主页</cite>-->
@@ -220,7 +217,7 @@
 <script type="application/javascript" th:src="@{/static/layui/jquery.min.js}"></script>
 <script type="application/javascript" th:src="@{/static/layui/layui.js}"></script>
 <script type="application/javascript" th:src="@{/static/layim/layui/layui.js}"></script>
-<script type="application/javascript" th:src="@{/static/js/admin/layuiim.js}"></script>
+<!--<script type="application/javascript" th:src="@{/static/js/admin/layuiim.js}"></script>-->
 <script>
     layui.config({
         base: '../layuiadmin/' //静态资源所在路径
