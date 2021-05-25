@@ -188,7 +188,7 @@ public class CommodityController {
             String ext = FilenameUtils.getExtension(files.getOriginalFilename());
             String filenames = filename + "." + ext;
             String pathname = "/opt/jetty/webapps/pic/";
-//        pathname = "C:\\Users\\seven\\Desktop\\pic-bed-tmp\\"; // 只是用于本地测试
+        pathname = "C:\\Users\\seven\\Desktop\\pic-bed-tmp\\"; // 只是用于本地测试
             Path filepath = Paths.get(pathname, filenames);
             filePaths.add(filepath.toString());
             files.transferTo(new File(filepath.toString()));
