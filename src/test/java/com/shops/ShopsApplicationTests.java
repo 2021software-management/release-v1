@@ -6,6 +6,7 @@ import com.entity.Reply;
 import com.entity.UserInfo;
 import com.service.*;
 import com.util.PageLength;
+import com.util.baidu.AuthService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,8 @@ public class ShopsApplicationTests {
     private ReplyService replyService;
     @Autowired
     private UserInfoService userInfoService;
+
+
 
     /**
      * 查询商品下的评论和回复
