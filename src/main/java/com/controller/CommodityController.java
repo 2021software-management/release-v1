@@ -159,7 +159,7 @@ public class CommodityController {
         }
         // 图片审核
         boolean ok = ImgCensor.ImgCensorUtil(new String[]{filepath.toString()});
-        if(!ok){
+        if (!ok) {
             System.out.println("图片审查失败");
             res.put("msg", "图片审查失败");
             res.put("code", 1);
@@ -178,25 +178,30 @@ public class CommodityController {
      */
     @PostMapping(value = "/relgoods/images")
     @ResponseBody
-    public JSONObject relgoodsimages(@RequestParam(value = "file", required = false) MultipartFile[] file) throws IOException {
+    public JSONObject relgoodsimages(@RequestParam(value = "file", required = false) MultipartFile[] files) throws IOException {
         JSONObject res = new JSONObject();
         JSONObject resUrl = new JSONObject();
         List<String> imageurls = new ArrayList<>();
         List<String> filePaths = new ArrayList<>();
-        for (MultipartFile files : file) {
+        for (MultipartFile file : files) {
             String filename = UUID.randomUUID().toString().replaceAll("-", "");
-            String ext = FilenameUtils.getExtension(files.getOriginalFilename());
+            String ext = FilenameUtils.getExtension(file.getOriginalFilename());
             String filenames = filename + "." + ext;
             String pathname = "/opt/jetty/webapps/pic/";
-        pathname = "C:\\Users\\seven\\Desktop\\pic-bed-tmp\\"; // 只是用于本地测试
+
+//            pathname = "C:\\Users\\seven\\Desktop\\pic-bed-tmp\\"; // 只是用于本地测试
             Path filepath = Paths.get(pathname, filenames);
-            filePaths.add(filepath.toString());
-            files.transferTo(new File(filepath.toString()));
+            try (OutputStream os = Files.newOutputStream(filepath)) {
+                os.write(file.getBytes());
+            }
             imageurls.add("/pic/" + filenames);
+            filePaths.add(filepath.toString());
+            res.put("msg", "");
+            res.put("code", 0);
         }
         // 图片审核
         boolean ok = ImgCensor.ImgCensorUtil(filePaths);
-        if(!ok){
+        if (!ok) {
             System.out.println("图片审查失败");
             res.put("msg", "图片审查失败");
             res.put("code", 1);
