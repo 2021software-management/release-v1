@@ -39,9 +39,9 @@ public class NoticesController {
     public ResultVo LookNoticesById (@PathVariable("id") String id) {
         Integer i = noticesService.updateNoticesById(id);
         if (i == 1){
-            return new ResultVo(true, StatusCode.OK,"设置成功");
+            return new ResultVo(true, StatusCode.OK,"Setup success");
         }
-        return new ResultVo(true, StatusCode.ERROR,"设置失败");
+        return new ResultVo(true, StatusCode.ERROR,"Failed to setup");
     }
 
     /**
@@ -52,7 +52,7 @@ public class NoticesController {
     public ResultVo queryNotices (HttpSession session){
         String userid = (String) session.getAttribute("userid");
         List<Notices> noticesList = noticesService.queryNotices(userid);
-        return new ResultVo(true,StatusCode.OK,"查询成功",noticesList);
+        return new ResultVo(true,StatusCode.OK,"Query success",noticesList);
     }
 
     /**
@@ -65,9 +65,9 @@ public class NoticesController {
         String userid = (String) session.getAttribute("userid");
         Integer i = noticesService.CancelLatest(userid);
         if (i == 1){
-            return new ResultVo(true,StatusCode.OK,"设置成功");
+            return new ResultVo(true,StatusCode.OK,"Setup success");
         }
-        return new ResultVo(true,StatusCode.ERROR,"设置失败");
+        return new ResultVo(true,StatusCode.ERROR,"Failed to setup");
     }
 
     /**

@@ -23,7 +23,7 @@ layui.use(['layim', 'laypage'], function () {
             contentType: "application/json;charset=UTF-8",
             beforeSend: function () {
                 layer.load(1, { //icon支持传入0-2
-                    content: '查询中...',
+                    content: 'Loading...',
                     success: function (layero) {
                         layero.find('.layui-layer-content').css({
                             'padding-top': '39px',
@@ -54,7 +54,7 @@ layui.use(['layim', 'laypage'], function () {
             contentType: "application/json;charset=UTF-8",
             beforeSend: function () {
                 layer.load(1, { //icon支持传入0-2
-                    content: '查询中...',
+                    content: 'Loading...',
                     success: function (layero) {
                         layero.find('.layui-layer-content').css({
                             'padding-top': '39px',
