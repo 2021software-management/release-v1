@@ -15,32 +15,28 @@
 <div class="wrapper wrapper-content">
     <div class="row">
         <div class="col-sm-12">
-            <!--
             <form class="layui-form" action="">
                 <div class="layui-form-item">
-                    <label class="layui-form-label" style="font-size:20px">选择状态</label>
+                    <label class="layui-form-label" style="font-size:20px">State</label>
                     <div class="layui-input-inline">
                         <select name="type" lay-filter="types">
-                            <option th:title="1">普通成员</option>
-                            <option th:title="0">禁封成员</option>
+                            <option th:title="1">normal</option>
+                            <option th:title="0">banned</option>
                         </select>
                     </div>
                 </div>
             </form>
-            -->
             <div class="animated fadeIn">
-                <table class="layui-hide" id="userlist" lay-filter="test" style="width: 100px;" ></table>
-                <!--
+                <table class="layui-hide" id="userlist" lay-filter="test" style="width: 100px;"></table>
                 <script type="text/html" id="barDemo">
                     {{# if(d.userstatus!=0){ }}
-                    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="fengjin">封号</a>
+                    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="fengjin">Ban</a>
                     {{# } }}
                     {{# if(d.userstatus!=1){ }}
-                    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="jiefeng">解封</a>
+                    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="jiefeng">Unblock</a>
                     {{# } }}
-                    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="setadmin">设为管理员</a>
+                    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="setadmin">Set as Admin.</a>
                 </script>
-                -->
             </div>
         </div>
     </div>
