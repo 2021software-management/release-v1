@@ -47,9 +47,9 @@ function lookalluser(stuatus) {
             if (obj.event === 'gerenzhuye') {
                 //window.open(basePath+"/product-detail/"+data.commid)
             }else if(obj.event === 'fengjin'){
-                layer.confirm('确认将用户封号吗？', {
-                    btn: ['确定','取消'], //按钮
-                    title:"用户封号",
+                layer.confirm('Are you sure to ban the user？', {
+                    btn: ['Yes','Cancel'], //按钮
+                    title:"Ban",
                     offset:"50px"
                 }, function(){
                     layer.closeAll();
@@ -76,7 +76,7 @@ function lookalluser(stuatus) {
                         success: function (data) {
                             console.log(data)
                             if(data.status===200){
-                                layer.msg(data.message, {
+                                layer.msg("Ban successfully!", {
                                     time: 1000,
                                     icon: 1,
                                     offset: '50px'
@@ -84,7 +84,7 @@ function lookalluser(stuatus) {
                                     location.reload();
                                 });
                             }else {
-                                layer.msg(data.message, {
+                                layer.msg("Failed!", {
                                     time: 1000,
                                     icon: 2,
                                     offset: '50px'
@@ -95,9 +95,9 @@ function lookalluser(stuatus) {
                 }, function(){
                 });
             }else if (obj.event === 'jiefeng') {
-                layer.confirm('确认将用户解封吗？', {
-                    btn: ['确定','取消'], //按钮
-                    title:"解封用户",
+                layer.confirm('Are you sure to unblock the user？', {
+                    btn: ['Yes','Cancel'], //按钮
+                    title:"Unblock",
                     offset:"50px"
                 }, function(){
                     layer.closeAll();
@@ -124,7 +124,7 @@ function lookalluser(stuatus) {
                         success: function (data) {
                             console.log(data)
                             if(data.status===200){
-                                layer.msg(data.message, {
+                                layer.msg("Unblock successfully!", {
                                     time: 1000,
                                     icon: 1,
                                     offset: '50px'
@@ -132,7 +132,7 @@ function lookalluser(stuatus) {
                                     location.reload();
                                 });
                             }else {
-                                layer.msg(data.message, {
+                                layer.msg("Failed!", {
                                     time: 1000,
                                     icon: 2,
                                     offset: '50px'
@@ -143,9 +143,9 @@ function lookalluser(stuatus) {
                 }, function(){
                 });
             }else if (obj.event === 'setadmin') {
-                layer.confirm('确认设置为管理员吗？', {
-                    btn: ['确定','取消'], //按钮
-                    title:"设置管理员",
+                layer.confirm('Are you sure to set the user as an administrator？', {
+                    btn: ['Yes','Cancel'], //按钮
+                    title:"Set as Admin.",
                     offset:"50px"
                 }, function(){
                     layer.closeAll();
@@ -172,7 +172,7 @@ function lookalluser(stuatus) {
                         success: function (data) {
                             console.log(data)
                             if(data.status===200){
-                                layer.msg(data.message, {
+                                layer.msg("Set successfully!", {
                                     time: 1000,
                                     icon: 1,
                                     offset: '50px'
@@ -180,7 +180,7 @@ function lookalluser(stuatus) {
                                     location.reload();
                                 });
                             }else {
-                                layer.msg(data.message, {
+                                layer.msg("Failed!", {
                                     time: 1000,
                                     icon: 2,
                                     offset: '50px'
