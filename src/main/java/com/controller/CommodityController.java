@@ -108,8 +108,8 @@ public class CommodityController {
         }
         commimagesService.InsertGoodImages(commimagesList);
         /**发出待审核系统通知*/
-        Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("商品审核")
-                .setWhys("您的商品 <a href=/product-detail/" + commodity.getCommid() + " style=\"color:#08bf91\" target=\"_blank\" >" + commodity.getCommname() + "</a> 进入待审核队列，请您耐心等待。");
+        Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("Product auditing")
+                .setWhys("Your product <a href=/product-detail/" + commodity.getCommid() + " style=\"color:#08bf91\" target=\"_blank\" >" + commodity.getCommname() + "</a> is now in Checking-list, Please wait。");
         noticesService.insertNotices(notices);
         return "0";
     }
@@ -138,13 +138,13 @@ public class CommodityController {
         if (checkImg(commodity.getCommid())){
             // 通过，直接发布
             commodityService.ChangeCommstatus(commid, 1);
-            Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("商品发布成功")
-                    .setWhys("您的商品 <a href=/product-detail/" + commid + " style=\"color:#08bf91\" target=\"_blank\" >" + commodity.getCommname() + "</a> 通过审核，已发布。");
+            Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("Product released")
+                    .setWhys("Your product <a href=/product-detail/" + commid + " style=\"color:#08bf91\" target=\"_blank\" >" + commodity.getCommname() + "</a> has passed, it's now accessible。");
             noticesService.insertNotices(notices);
         }else {
             // 自动审核不通过，需要管理员手动审核
-            Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("商品审核")
-                    .setWhys("您的商品 <a href=/product-detail/" + commid + " style=\"color:#08bf91\" target=\"_blank\" >" + commodity.getCommname() + "</a> 检测到风险，进入待审核队列，请您耐心等待。");
+            Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("Product auditing")
+                    .setWhys("Your product <a href=/product-detail/" + commid + " style=\"color:#08bf91\" target=\"_blank\" >" + commodity.getCommname() + "</a> found risk，it's now in investigation, please wait。");
             noticesService.insertNotices(notices);
         }
 
@@ -288,7 +288,7 @@ public class CommodityController {
     @ResponseBody
     public PageVo searchCommodityNumber(@PathVariable("commname") String commname) {
         Integer dataNumber = commodityService.queryCommodityByNameCount(commname);
-        return new PageVo(StatusCode.OK, "查询成功", dataNumber);
+        return new PageVo(StatusCode.OK, "Query success", dataNumber);
     }
 
     /**
@@ -306,9 +306,9 @@ public class CommodityController {
                 List<String> imagesList = commimagesService.LookGoodImages(commodity.getCommid());
                 commodity.setOtherimg(imagesList);
             }
-            return new ResultVo(true, StatusCode.OK, "查询成功", commodityList);
+            return new ResultVo(true, StatusCode.OK, "Query success", commodityList);
         } else {
-            return new ResultVo(true, StatusCode.ERROR, "没有相关商品");
+            return new ResultVo(true, StatusCode.ERROR, "No product related...");
         }
     }
 
@@ -325,7 +325,7 @@ public class CommodityController {
             List<String> imagesList = commimagesService.LookGoodImages(commodity.getCommid());
             commodity.setOtherimg(imagesList);
         }
-        return new ResultVo(true, StatusCode.OK, "查询成功", commodityList);
+        return new ResultVo(true, StatusCode.OK, "Query success", commodityList);
     }
 
     /**
@@ -341,7 +341,7 @@ public class CommodityController {
             List<String> imagesList = commimagesService.LookGoodImages(commodity.getCommid());
             commodity.setOtherimg(imagesList);
         }
-        return new ResultVo(true, StatusCode.OK, "查询成功", commodityList);
+        return new ResultVo(true, StatusCode.OK, "Query success", commodityList);
     }
 
     /**
@@ -362,7 +362,7 @@ public class CommodityController {
             school = userInfo.getSchool();
         }
         Integer dataNumber = commodityService.queryAllCommodityByCategoryCount(area, school, category, minmoney, maxmoney);
-        return new PageVo(StatusCode.OK, "查询成功", dataNumber);
+        return new PageVo(StatusCode.OK, "Query success", dataNumber);
     }
 
     /**
@@ -427,7 +427,7 @@ public class CommodityController {
                 });
             }
         }
-        return new ResultVo(true, StatusCode.OK, "查询成功", commodityList);
+        return new ResultVo(true, StatusCode.OK, "Query success", commodityList);
     }
 
     /**
@@ -477,9 +477,9 @@ public class CommodityController {
                 /**添加售出记录*/
                 soldrecordService.insertSold(soldrecord);
             }
-            return new ResultVo(true, StatusCode.OK, "操作成功");
+            return new ResultVo(true, StatusCode.OK, "Operation success");
         }
-        return new ResultVo(false, StatusCode.ERROR, "操作失败");
+        return new ResultVo(false, StatusCode.ERROR, "Operation failed");
     }
 
     private boolean checkImg(String commid) {

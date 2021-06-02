@@ -144,8 +144,8 @@ public class AdminController {
             if (i == 1){
                 userRoleService.UpdateUserRole(new UserRole().setUserid(userid).setRoleid(2).setIdentity("网站管理员"));
                 /**发出设置为管理员的系统通知*/
-                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("系统通知")
-                        .setWhys("恭喜您已被设置为网站管理员，努力维护网站的良好氛围。");
+                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("System notification")
+                        .setWhys("congratulation! You are set as the website administrator, let's make joint efforts to preserve a good atmosphere");
                 noticesService.insertNotices(notices);
                 return new ResultVo(true, StatusCode.OK, "设置管理员成功");
             }
@@ -155,8 +155,8 @@ public class AdminController {
             if (i == 1){
                 userRoleService.UpdateUserRole(new UserRole().setUserid(userid).setRoleid(1).setIdentity("网站用户"));
                 /**发出设置为网站用户的系统通知*/
-                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("系统通知")
-                        .setWhys("您已被设置为网站用户，希望您再接再厉。");
+                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("System notification")
+                        .setWhys("You are now the user of the website, welcome!");
                 noticesService.insertNotices(notices);
                 return new ResultVo(true, StatusCode.OK, "设置成员成功");
             }
@@ -177,19 +177,19 @@ public class AdminController {
             Integer j = userInfoService.UpdateUserInfo(new UserInfo().setUserid(userid).setUserstatus(userstatus));
             if (i ==1 && j == 1){
                 /**发出封号的系统通知*/
-                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("系统通知")
-                        .setWhys("因为您的不良行为，您在该网站的账号已被封号。");
+                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("System notification")
+                        .setWhys("Because of your willful misconduct, your account is sealed.");
                 noticesService.insertNotices(notices);
-                return new ResultVo(true, StatusCode.OK, "封号成功");
+                return new ResultVo(true, StatusCode.OK, "Seal success");
             }
-            return new ResultVo(true, StatusCode.ERROR, "封号失败");
+            return new ResultVo(true, StatusCode.ERROR, "Failed to seal");
         }else if (userstatus == 1){
             Integer i = loginService.updateLogin(new Login().setUserid(userid).setUserstatus(userstatus));
             Integer j = userInfoService.UpdateUserInfo(new UserInfo().setUserid(userid).setUserstatus(userstatus));
             if (i ==1 && j == 1){
                 /**发出解封的系统通知*/
-                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("系统通知")
-                        .setWhys("您在该网站的账号已被解封，希望您保持良好的行为。");
+                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("System notification")
+                        .setWhys("Your account is now re-ativated, please keep a good conduct.");
                 noticesService.insertNotices(notices);
                 return new ResultVo(true, StatusCode.OK, "解封成功");
             }
@@ -239,17 +239,17 @@ public class AdminController {
             /**发出商品审核结果的系统通知*/
             Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid));
             if (commstatus == 0){
-                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(commodity.getUserid()).setTpname("商品审核")
-                        .setWhys("您的商品 <a href=/product-detail/"+commodity.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a> 未通过审核，目前不支持公开发布。");
+                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(commodity.getUserid()).setTpname("Product auditing")
+                        .setWhys("Your product <a href=/product-detail/"+commodity.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a> failed to pass auditing, please double check.");
                 noticesService.insertNotices(notices);
             }else if (commstatus == 1){
-                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(commodity.getUserid()).setTpname("商品审核")
-                        .setWhys("您的商品 <a href=/product-detail/"+commodity.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a> 已通过审核，快去看看吧。");
+                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(commodity.getUserid()).setTpname("Product auditing")
+                        .setWhys("Your product <a href=/product-detail/"+commodity.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a> is now released, take a look.");
                 noticesService.insertNotices(notices);
             }
-            return new ResultVo(true,StatusCode.OK,"操作成功");
+            return new ResultVo(true,StatusCode.OK,"Operation success");
         }
-        return new ResultVo(false,StatusCode.ERROR,"操作失败");
+        return new ResultVo(false,StatusCode.ERROR,"Operation failed");
     }
 
 }

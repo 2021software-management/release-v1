@@ -60,7 +60,7 @@ public class CommentReplyController {
             /**添加评论下的回复及评论者昵称和头像信息*/
             comment.setReplyLsit(repliesList).setCusername(userInfo.getUsername()).setCuimage(userInfo.getUimage());
         }
-        return new ResultVo(true, StatusCode.OK,"查询评论回复成功",commentsList);
+        return new ResultVo(true, StatusCode.OK,"Commet query success",commentsList);
     }
 
     /**
@@ -76,7 +76,7 @@ public class CommentReplyController {
         String content = comment.getContent();
 
         if (StringUtils.isEmpty(cuserid)) {
-            return new ResultVo(false,StatusCode.ACCESSERROR,"请登录后再评论");
+            return new ResultVo(false,StatusCode.ACCESSERROR,"Please login first before you comment!");
         }
         content = content.replace("<", "&lt;");
         content = content.replace(">", "&gt;");
@@ -88,12 +88,12 @@ public class CommentReplyController {
         if (i == 1){
             /**发出评论通知消息*/
             Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(comment.getCommid()));
-            Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(comment.getSpuserid()).setTpname("评论")
-                    .setWhys("您的商品 <a href=/product-detail/"+comment.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a> 被评论了，快去看看吧。");
+            Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(comment.getSpuserid()).setTpname("Comment")
+                    .setWhys("Your product <a href=/product-detail/"+comment.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a> got commented，take a look。");
             noticesService.insertNotices(notices);
-            return new ResultVo(true, StatusCode.OK,"评论成功");
+            return new ResultVo(true, StatusCode.OK,"Comment success");
         }
-        return new ResultVo(false,StatusCode.ERROR,"评论失败");
+        return new ResultVo(false,StatusCode.ERROR,"Comment failed");
     }
 
     /**
@@ -109,7 +109,7 @@ public class CommentReplyController {
         String recontent = reply.getRecontent();
 
         if (StringUtils.isEmpty(ruserid)) {
-            return new ResultVo(false,StatusCode.ACCESSERROR,"请登录后再评论");
+            return new ResultVo(false,StatusCode.ACCESSERROR,"Please login first!");
         }
 
         recontent = recontent.replace("<", "&lt;");
@@ -122,12 +122,12 @@ public class CommentReplyController {
         if (i == 1){
             /**发出评论回复通知消息*/
             Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(reply.getCommid()));
-            Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(reply.getCuserid()).setTpname("评论回复")
-                    .setWhys("有小伙伴在 <a href=/product-detail/"+reply.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a> 下回复了您的评论，快去看看吧。");
+            Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(reply.getCuserid()).setTpname("Message relpy")
+                    .setWhys("Someone commented on your previous comment <a href=/product-detail/"+reply.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a>，go and take a look。");
             noticesService.insertNotices(notices);
-            return new ResultVo(true, StatusCode.OK,"回复成功");
+            return new ResultVo(true, StatusCode.OK,"Comment success");
         }
-        return new ResultVo(false,StatusCode.ERROR,"回复失败");
+        return new ResultVo(false,StatusCode.ERROR,"Comment failed");
     }
 
     /**
@@ -146,11 +146,11 @@ public class CommentReplyController {
             Integer i = commentService.deleteComment(cid);
             Integer j = replyService.deleteReply(new Reply().setCid(cid));
             if (i == 1 && j == 1){
-                return new ResultVo(true, StatusCode.OK,"删除成功");
+                return new ResultVo(true, StatusCode.OK,"Delete success");
             }
-            return new ResultVo(false, StatusCode.ERROR,"删除失败");
+            return new ResultVo(false, StatusCode.ERROR,"Failed to delete");
         }
-        return new ResultVo(false,StatusCode.ACCESSERROR,"禁止操作");
+        return new ResultVo(false,StatusCode.ACCESSERROR,"No permission!");
     }
 
     /**
@@ -168,11 +168,11 @@ public class CommentReplyController {
         if (reply.getRuserid().equals(ruserid) || reply.getSpuserid().equals(ruserid)){
             Integer i = replyService.deleteReply(new Reply().setRid(rid));
             if (i == 1){
-                return new ResultVo(true, StatusCode.OK,"删除成功");
+                return new ResultVo(true, StatusCode.OK,"Delete success");
             }
-            return new ResultVo(false, StatusCode.ERROR,"删除失败");
+            return new ResultVo(false, StatusCode.ERROR,"Failed to delete");
         }
-        return new ResultVo(false,StatusCode.ACCESSERROR,"禁止操作");
+        return new ResultVo(false,StatusCode.ACCESSERROR,"No permission!");
     }
 
 }
