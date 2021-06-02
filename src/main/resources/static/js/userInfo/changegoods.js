@@ -283,7 +283,7 @@ layui.use(['form', 'upload', 'element'], function () {
                 layer.closeAll('loading');
             },
             success: function (data) {
-                layer.msg("修改成功，请等待审核", {
+                layer.msg("修改成功", {
                     time: 1000,
                     icon: 1,
                     offset: '100px'
