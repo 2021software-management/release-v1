@@ -168,15 +168,15 @@ public class CommodityController {
         try (OutputStream os = Files.newOutputStream(filepath)) {
             os.write(file.getBytes());
         }
-        // 图片审核
-        boolean ok = ImgCensor.ImgCensorUtil(new String[]{filepath.toString()});
-        if (!ok) {
-            System.out.println("图片审查失败");
-            res.put("msg", "图片审查失败");
-            res.put("code", 1);
-            res.put("data", resUrl);
-            return res;
-        }
+        // 图片审核【目前此功能转移至提交商品时，上传图片时不作审核】
+//        boolean ok = ImgCensor.ImgCensorUtil(new String[]{filepath.toString()});
+//        if (!ok) {
+//            System.out.println("图片审查失败");
+//            res.put("msg", "图片审查失败");
+//            res.put("code", 1);
+//            res.put("data", resUrl);
+//            return res;
+//        }
         resUrl.put("src", "/pic/" + filenames);
         res.put("msg", "图片上传成功");
         res.put("code", 0);
@@ -210,15 +210,15 @@ public class CommodityController {
             res.put("msg", "");
             res.put("code", 0);
         }
-        // 图片审核
-        boolean ok = ImgCensor.ImgCensorUtil(filePaths);
-        if (!ok) {
-            System.out.println("图片审查失败");
-            res.put("msg", "图片审查失败");
-            res.put("code", 1);
-            res.put("data", resUrl);
-            return res;
-        }
+        // 图片审核【目前此功能转移至提交商品时，上传图片时不作审核】
+//        boolean ok = ImgCensor.ImgCensorUtil(filePaths);
+//        if (!ok) {
+//            System.out.println("图片审查失败");
+//            res.put("msg", "图片审查失败");
+//            res.put("code", 1);
+//            res.put("data", resUrl);
+//            return res;
+//        }
         resUrl.put("src", imageurls);
         res.put("msg", "图片上传成功");
         res.put("code", 0);
@@ -483,6 +483,7 @@ public class CommodityController {
     }
 
     private boolean checkImg(String commid) {
+        // 此函数用于检查商品所有的图片是否符合AI要求
         Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid));
         String rootPath = "/opt/jetty/webapps";
         List<String> checkImgs = new ArrayList<>();
