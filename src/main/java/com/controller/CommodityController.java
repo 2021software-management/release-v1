@@ -133,10 +133,21 @@ public class CommodityController {
             commimagesList.add(new Commimages().setId(KeyUtil.genUniqueKey()).setCommid(commid).setImage(list));
         }
         commimagesService.InsertGoodImages(commimagesList);
-        /**发出待审核系统通知*/
-        Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("商品审核")
-                .setWhys("您的商品 <a href=/product-detail/" + commid + " style=\"color:#08bf91\" target=\"_blank\" >" + commodity.getCommname() + "</a> 进入待审核队列，请您耐心等待。");
-        noticesService.insertNotices(notices);
+
+        // AI自动审核，如果通过则商品直接通过，否则由管理员手动识别
+        if (checkImg(commodity.getCommid())){
+            // 通过，直接发布
+            commodityService.ChangeCommstatus(commid, 1);
+            Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("商品发布成功")
+                    .setWhys("您的商品 <a href=/product-detail/" + commid + " style=\"color:#08bf91\" target=\"_blank\" >" + commodity.getCommname() + "</a> 通过审核，已发布。");
+            noticesService.insertNotices(notices);
+        }else {
+            // 自动审核不通过，需要管理员手动审核
+            Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("商品审核")
+                    .setWhys("您的商品 <a href=/product-detail/" + commid + " style=\"color:#08bf91\" target=\"_blank\" >" + commodity.getCommname() + "</a> 检测到风险，进入待审核队列，请您耐心等待。");
+            noticesService.insertNotices(notices);
+        }
+
         return "0";
     }
 
@@ -470,5 +481,26 @@ public class CommodityController {
         }
         return new ResultVo(false, StatusCode.ERROR, "操作失败");
     }
+
+    private boolean checkImg(String commid) {
+        Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid));
+        String rootPath = "/opt/jetty/webapps";
+        List<String> checkImgs = new ArrayList<>();
+
+        if(commodity.getImage() != ""){
+            String filePath = rootPath + commodity.getImage();
+            checkImgs.add(filePath);
+//            System.out.println("check-img1 "+filePath);
+        }
+        List<String> otherimg = commimagesService.LookGoodImages(commid);
+        for (int i = 0; i < otherimg.size(); i++) {
+            String filePath =  rootPath+otherimg.get(i);
+            checkImgs.add(filePath);
+//            System.out.println("check-img2 "+filePath);
+        }
+
+        return ImgCensor.ImgCensorUtil(checkImgs);
+    }
+
 }
 
