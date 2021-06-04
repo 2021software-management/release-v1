@@ -85,15 +85,17 @@
                 <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu"
                     lay-filter="layadmin-system-side-menu">
                     <li data-name="home" class="layui-nav-item">
-                        <a href="javascript:;" lay-tips="主页" lay-direction="2">
+                        <a href="javascript:;" lay-tips="主页" lay-direction="2" lay-href="/echars/console">
                             <i class="layui-icon layui-icon-home"></i>
-                            <cite>Main Interface</cite>
+                            <cite>Welcome Page</cite>
                         </a>
+	        <!--
                         <dl class="layui-nav-child">
                             <dd data-name="console" class="layui-this">
                                 <a lay-href="/echars/console">Data Analysis</a>
                             </dd>
                         </dl>
+	        -->
                     </li>
                     <li shiro:hasPermission="admin:set" data-name="user" class="layui-nav-item">
                         <a href="javascript:;" lay-tips="用户管理" lay-direction="2">
