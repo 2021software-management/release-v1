@@ -6,18 +6,19 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table'], f
         , page: {
             layout: ['limit', 'count', 'prev', 'page', 'next', 'skip']
             , groups: 3
-            , limits: [20, 50, 100]
-            , limit: 20
+            , limits: [10, 20, 50]
+            , limit: 10
         }, cols: [[
-            {field: 'uimage', title: '头像', templet: '<div><img src="{{d.uimage}}" class="layui-nav-img"></div>',width:70}
-            , {field: 'username', title: '昵称', width: 120, align:'center'}
-            , {field: 'mobilephone', title: '手机号', width: 160, align:'center'}
-            , {field: 'email', title: '邮箱', width: 200, align:'center'}
-            , {field: 'sex', title: '性别', width: 80, align:'center'}
+            {field: 'uimage', title: 'Avatar', templet: '<div><img src="{{d.uimage}}" class="layui-nav-img"></div>',width:120,align:'center'}
+            , {field: 'username', title: 'Nickname', width: 200, align:'center'}
+            , {field: 'mobilephone', title: 'PhoneNum', width: 200, align:'center'}
+            , {field: 'email', title: 'Email', width: 300, align:'center'}
+            , {field: 'sex', title: 'Sex', width: 150, align:'center'}
+            /*
             , {field: 'school', title: '学校', width: 200, align:'center'}
             , {field: 'faculty', title: '院系', width: 160, align:'center'}
-            , {field: 'roleid', title: '身份', width: 100, align:'center'}
-            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:120, align:'center'}
+            , {field: 'roleid', title: '身份', width: 100, align:'center'}*/
+            , {fixed: 'right', title: 'OP', toolbar: '#barDemo', width:320, align:'center'}
         ]], done: function (res, curr, count) {
             $("[data-field='roleid']").children().each(function () {
                 if($(this).text() == '身份') {
@@ -37,9 +38,9 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table'], f
         if (obj.event === 'gerenzhuye') {
             //window.open(basePath+"/product-detail/"+data.commid)
         }else if(obj.event === 'setuser'){
-            layer.confirm('确认设置为成员吗？', {
-                btn: ['确定','算了'], //按钮
-                title:"用户封号",
+            layer.confirm('Are you sure to set the administrator as a user？', {
+                btn: ['Yes','Cancel'], //按钮
+                title:"Set as User",
                 offset:"50px"
             }, function(){
                 layer.closeAll();
@@ -66,7 +67,7 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table'], f
                     success: function (data) {
                         console.log(data)
                         if(data.status===200){
-                            layer.msg(data.message, {
+                            layer.msg("Set successfully!", {
                                 time: 1000,
                                 icon: 1,
                                 offset: '50px'
@@ -74,7 +75,7 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table'], f
                                 location.reload();
                             });
                         }else {
-                            layer.msg(data.message, {
+                            layer.msg("Failed!", {
                                 time: 1000,
                                 icon: 2,
                                 offset: '50px'
