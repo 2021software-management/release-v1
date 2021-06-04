@@ -22,11 +22,11 @@ function lookallproduct(stuatus) {
                 , limit: 20
             }, cols: [[
                 {field: 'qid', title: 'ID',width:80, align:'center'}
-                , {field: 'commname', title: '名称', width: 300, align:'center'}
-                , {field: 'category', title: '类别', width: 100, align:'center'}
-                , {field: 'commdesc', title: '描述', width: 700, align:'center'}
-                , {field: 'updatetime', title: '时间', width: 160,sort: true, align:'center'}
-                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:250, align:'center'}
+                , {field: 'commname', title: 'Name', width: 300, align:'center'}
+                , {field: 'category', title: 'Category', width: 100, align:'center'}
+                , {field: 'commdesc', title: 'Description', width: 700, align:'center'}
+                , {field: 'updatetime', title: 'Time', width: 160,sort: true, align:'center'}
+                , {fixed: 'right', title: 'Operation', toolbar: '#barDemo', width:250, align:'center'}
             ]], done: function (res, curr, count) {
                 var i=1;
                 $("[data-field='qid']").children().each(function () {
