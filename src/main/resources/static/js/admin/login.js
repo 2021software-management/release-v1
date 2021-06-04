@@ -35,7 +35,7 @@ layui.config({
                         location.href="/admin/index";
                     });
                 } else {
-                    layer.msg("Wrong Password or Identifying Code!"/*data.message*/, {
+                    layer.msg("Login failed!"/*data.message*/, {
                         time: 1000,
                         icon: 5,
                         offset: '100px'
