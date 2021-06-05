@@ -18,7 +18,7 @@
       "thumb": ""
     },
     {
-      "alt": "佟丽娅女神",
+      "alt": "佟丽娅Female神",
       "pid": 111,
       "src": "https://wx2.sinaimg.cn/mw690/5db11ff4gy1fmx4kec5bvj20eb0h3mxh.jpg",
       "thumb": ""

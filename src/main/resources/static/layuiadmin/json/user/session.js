@@ -3,7 +3,7 @@
   ,"msg": ""
   ,"data": {
     "username": "贤心"
-    ,"sex": "男"
+    ,"sex": "Male"
     ,"role": 1
   }
 }

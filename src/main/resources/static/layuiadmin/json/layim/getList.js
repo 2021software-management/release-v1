@@ -69,7 +69,7 @@
         ,"sign": ""
       }]
     },{
-      "groupname": "女神艺人"
+      "groupname": "Female神艺人"
       ,"id": 2
       ,"list": [{
         "username": "王祖贤"

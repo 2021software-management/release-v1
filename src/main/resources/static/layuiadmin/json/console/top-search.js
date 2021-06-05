@@ -3,11 +3,11 @@
   ,"msg": ""
   ,"count": "100"
   ,"data": [{
-    "keywords": "贤心是男是女"
+    "keywords": "贤心是Male是Female"
     ,"frequency": 8520
     ,"userNums": 2216
   },{
-    "keywords": "Java程序员能找到女朋友吗"
+    "keywords": "Java程序员能找到Female朋友吗"
     ,"frequency": 666
     ,"userNums": 333
   },{
