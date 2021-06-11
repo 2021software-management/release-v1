@@ -42,9 +42,9 @@ public class NewsController {
         news.setId(KeyUtil.genUniqueKey()).setUsername(username);
         Integer i = newsService.insertNews(news);
         if (i == 1){
-            return new ResultVo(true, StatusCode.OK,"公告发布成功");
+            return new ResultVo(true, StatusCode.OK,"Operation success");
         }
-        return new ResultVo(false,StatusCode.ERROR,"公告发布失败，请重新发布");
+        return new ResultVo(false,StatusCode.ERROR,"Operation failed, please try again");
     }
 
     /**

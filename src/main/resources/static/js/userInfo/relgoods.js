@@ -266,7 +266,7 @@ layui.use(['form', 'upload', 'element'], function () {
                 layer.closeAll('loading');
             },
             success: function (data) {
-                layer.msg("发布成功", {
+                layer.msg("Operation success", {
                     time: 1000,
                     icon: 1,
                     offset: '100px'
