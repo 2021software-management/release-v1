@@ -71,7 +71,7 @@ function lookallproduct(stuatus) {
                         dataType: "json", //回调
                         beforeSend: function () {
                             layer.load(1, { //icon支持传入0-2
-                                content: '请稍等...',
+                                content: 'Loading...',
                                 success: function (layero) {
                                     layero.find('.layui-layer-content').css({
                                         'padding-top': '39px',
@@ -105,9 +105,9 @@ function lookallproduct(stuatus) {
                 }, function(){
                 });
             }else if (obj.event === 'yishou') {
-                layer.confirm('确认设置该商品为已售吗？', {
-                    btn: ['确定','算了'], //按钮
-                    title:"售出商品",
+                layer.confirm('Sure to mark it as sold?', {
+                    btn: ['Yes','No'], //按钮
+                    title:"Mark as sold",
                     offset:"50px"
                 }, function(){
                     layer.closeAll();
@@ -119,7 +119,7 @@ function lookallproduct(stuatus) {
                         dataType: "json", //回调
                         beforeSend: function () {
                             layer.load(1, { //icon支持传入0-2
-                                content: '请稍等...',
+                                content: 'Loading...',
                                 success: function (layero) {
                                     layero.find('.layui-layer-content').css({
                                         'padding-top': '39px',

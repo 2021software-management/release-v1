@@ -178,7 +178,7 @@ public class CommodityController {
 //            return res;
 //        }
         resUrl.put("src", "/pic/" + filenames);
-        res.put("msg", "图片上传成功");
+        res.put("msg", "Image successfully uploaded");
         res.put("code", 0);
         res.put("data", resUrl);
         return res;
@@ -220,7 +220,7 @@ public class CommodityController {
 //            return res;
 //        }
         resUrl.put("src", imageurls);
-        res.put("msg", "图片上传成功");
+        res.put("msg", "Image successfully uploaded");
         res.put("code", 0);
         res.put("data", resUrl);
         return res;

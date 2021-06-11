@@ -111,7 +111,7 @@ layui.use(['form', 'upload', 'element'], function () {
                 return layer.msg('上传失败');
             } else {
                 layer.closeAll('loading');
-                layer.msg('上传成功', {
+                layer.msg('Successfully uploaded', {
                     time: 1000,
                     icon: 1,
                     offset: '150px'
@@ -148,7 +148,7 @@ layui.use(['form', 'upload', 'element'], function () {
                 return layer.msg('上传失败');
             } else {
                 layer.closeAll('loading');
-                layer.msg('上传成功', {
+                layer.msg('Successfully uploaded', {
                     time: 1000,
                     icon: 1,
                     offset: '150px'
@@ -185,7 +185,7 @@ layui.use(['form', 'upload', 'element'], function () {
                 return layer.msg('上传失败');
             } else {
                 layer.closeAll('loading');
-                layer.msg('上传成功', {
+                layer.msg('Successfully uploaded', {
                     time: 1000,
                     icon: 1,
                     offset: '150px'
@@ -270,7 +270,7 @@ layui.use(['form', 'upload', 'element'], function () {
             dataType: "json",
             beforeSend: function () {
                 layer.load(1, {
-                    content: '请稍等...',
+                    content: 'Loading...',
                     success: function (layero) {
                         layero.find('.layui-layer-content').css({
                             'padding-top': '39px',
