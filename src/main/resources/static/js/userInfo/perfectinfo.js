@@ -46,7 +46,7 @@ layui.use(['form', 'element', 'util', 'carousel', 'form', 'laypage', 'layer','ta
             });
         },done: function(res){
             layer.closeAll('loading');
-            layer.msg('上传成功', {
+            layer.msg('Successfully uploaded', {
                 time: 1000,
                 icon: 1,
                 offset: '150px'

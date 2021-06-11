@@ -111,7 +111,7 @@ layui.use(['form', 'upload', 'element'], function () {
                 return layer.msg('上传失败');
             } else {
                 layer.closeAll('loading');
-                layer.msg('上传成功', {
+                layer.msg('Successfully uploaded', {
                     time: 1000,
                     icon: 1,
                     offset: '150px'
@@ -148,7 +148,7 @@ layui.use(['form', 'upload', 'element'], function () {
                 return layer.msg('上传失败');
             } else {
                 layer.closeAll('loading');
-                layer.msg('上传成功', {
+                layer.msg('Successfully uploaded', {
                     time: 1000,
                     icon: 1,
                     offset: '150px'
@@ -185,7 +185,7 @@ layui.use(['form', 'upload', 'element'], function () {
                 return layer.msg('上传失败');
             } else {
                 layer.closeAll('loading');
-                layer.msg('上传成功', {
+                layer.msg('Successfully uploaded', {
                     time: 1000,
                     icon: 1,
                     offset: '150px'
