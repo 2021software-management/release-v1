@@ -157,7 +157,7 @@ function ganxingqu() {
             dataType: "json", //回调
             beforeSend: function () {
                 layer.load(1, { //icon支持传入0-2
-                    content: '请稍等',
+                    content: 'Loading',
                     success: function (layero) {
                         layero.find('.layui-layer-content').css({
                             'padding-top': '39px',
